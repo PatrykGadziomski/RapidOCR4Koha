@@ -1,3 +1,6 @@
 .venv/
-*.jpg
-*.txt
+imgs/
+output/
+assets/
+*.drawio
+*.bkp

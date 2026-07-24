@@ -3,13 +3,22 @@
 from rapidocr import RapidOCR
 
 # --- Konfiguration ---
-IMAGE_PATH = "Adobe Scan 24 Jul 2026.jpg"   # Pfad zu deinem Bild anpassen
-OUTPUT_PATH = "output.txt"                # Ausgabedatei
+IMAGE_PATH = "imgs/Adobe Scan 24 Jul 2026.jpg"   # Pfad zu deinem Bild anpassen
+OUTPUT_PATH = "output/output.txt"                # Ausgabedatei
 INDENT_THRESHOLD = 20                     # Pixel, ggf. anpassen
 
 # --- OCR ausführen ---
-engine = RapidOCR()
+# engine = RapidOCR()
+
+engine = RapidOCR(
+    params={
+        "Rec.lang_type": "german",
+        "Det.lang_type": "german",
+    }
+)
+
 result = engine(IMAGE_PATH)
+# print(engine.params)
 
 lines = []
 for box, text, score in zip(result.boxes, result.txts, result.scores):
